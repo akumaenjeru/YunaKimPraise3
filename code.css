@@ -1,0 +1,117 @@
+/* Basic Reset & Body Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* --- START: Background Image CSS with Overlay --- */
+    background:
+        /* Top layer: semi-transparent dark overlay (adjust color/opacity: rgba(R, G, B, Alpha)) */
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        /* Bottom layer: the image */
+        url('https://www.korea.net/upload/content/editImage/Kim_Yuna_Sochi_Olympics_Article_02.jpg') no-repeat center center fixed;
+    background-size: cover; /* Scale image to cover the entire viewport */
+    /* --- END: Background Image CSS with Overlay --- */
+    color: #333; /* Default text color - might need adjustment based on image/overlay */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    line-height: 1.6;
+}
+
+/* Main Container - Flexbox for Centering */
+.container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center;     /* Center horizontally */
+    min-height: 100vh;       /* Full viewport height */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Praise Display Area */
+#praise-display {
+    /* display: none; */ /* Removed: Initially visible with placeholder text */
+    opacity: 0;    /* Start fully transparent for fade-in/initial state */
+    /* Adjusted background for better contrast over potential image background */
+    background-color: rgba(255, 255, 255, 0.92); /* Slightly more opaque white */
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    margin-bottom: 50px; /* Space between text and button */
+    max-width: 90%;      /* Limit width on larger screens */
+    width: 600px;        /* Preferred width */
+    min-height: 80px;    /* Give it some initial height */
+    font-size: 1.3em;
+    font-weight: 500;
+    color: #2c3e50; /* Dark text color for readability */
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out; /* Smooth fade and slight scale */
+    transform: translateY(-10px); /* Start slightly up */
+}
+
+#praise-display.visible {
+    /* display: block; */ /* Not needed if never set to none */
+    opacity: 1;     /* Fade it in */
+    transform: translateY(0); /* Move to final position */
+}
+
+/* The Fancy Button */
+#generate-button {
+    padding: 20px 45px;
+    font-size: 1.6em;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(145deg, #4e54c8 0%, #8f94fb 100%);
+    border: none;
+    border-radius: 50px; /* Pill shape */
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(78, 84, 200, 0.4);
+    transition: all 0.3s ease; /* Smooth transitions for hover/active */
+    outline: none; /* Remove focus outline */
+    letter-spacing: 1px;
+}
+
+#generate-button:hover {
+    background: linear-gradient(145deg, #4349b8 0%, #7d82e6 100%);
+    box-shadow: 0 8px 25px rgba(78, 84, 200, 0.5);
+    transform: translateY(-3px); /* Slight lift */
+}
+
+#generate-button:active {
+    transform: translateY(1px); /* Push down effect */
+    box-shadow: 0 4px 15px rgba(78, 84, 200, 0.3);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    #praise-display {
+        font-size: 1.1em;
+        padding: 20px 25px;
+        width: 90%; /* Use more width */
+        margin-bottom: 40px;
+        min-height: 70px;
+    }
+
+    #generate-button {
+        font-size: 1.3em;
+        padding: 18px 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    #praise-display {
+        font-size: 1em;
+        padding: 15px 20px;
+        min-height: 60px;
+    }
+
+    #generate-button {
+        font-size: 1.1em;
+        padding: 15px 30px;
+        width: 80%; /* Make button wider for easier tapping */
+    }
+}
